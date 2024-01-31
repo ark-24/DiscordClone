@@ -14,9 +14,9 @@ export const initialProfile = async () => {
             userId: user.id
         }
     });
-    console.log(profile.then(res => console.log(res?.userId)))
+    // console.log(profile.then(res => console.log(res?.userId)))
     if(profile) {
-        return profile;
+       return profile;
     }
 
     const newProfile = await db.profile.create({
@@ -28,6 +28,7 @@ export const initialProfile = async () => {
 
         }
     })
+    console.log(newProfile)
 
     return newProfile;
 
