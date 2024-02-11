@@ -1,12 +1,14 @@
 "use client";
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useForm } from "react-hook-form";
+import { useEffect, useState } from "react";
+
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form";
 import {Input} from "@/components/ui/input"
 import {Button} from "@/components/ui/button"
-import { useEffect, useState } from "react";
+import { FileUpload } from "../file-upload";
 
 
 const formSchema = z.object({
@@ -62,7 +64,11 @@ export const InitialModal = () => {
                                     render={({field}) => (
                                         <FormItem>
                                             <FormControl>
-                                                File Upload
+                                                <FileUpload
+                                                endpoint="serverImage"
+                                                value={field.value}
+                                                onChange={field.onChange}
+                                                />
                                             </FormControl>
                                         </FormItem>
                                     )}
